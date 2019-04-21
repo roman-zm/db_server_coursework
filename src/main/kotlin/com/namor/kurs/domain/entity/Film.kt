@@ -16,6 +16,7 @@ data class Film(
 
         @Column(name = "login_admin")
         val loginAdmin: String,
+        val name: String,
         val director: String,
         val year: Int,
         val actors: String,

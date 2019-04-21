@@ -1,13 +1,19 @@
 package com.namor.kurs.domain.entity
 
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import java.io.Serializable
+import javax.persistence.*
 
 @Table(name = "filmgenre")
 @Entity
+//@IdClass(FilmGenreId::class)
 data class FilmGenre(
-    @Id val genre: Int,
-    val film: Int
+        @Id val id: Int,
+        val genre: Int,
+        val film: Int
 )
 
+@Embeddable
+data class FilmGenreId(
+        @Column(name = "genre") val genre: Int,
+        @Column(name = "film") val film: Int
+): Serializable

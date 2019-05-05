@@ -7,14 +7,19 @@ import javax.persistence.*
 @Entity
 data class Genre(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Int,
     val name: String,
-    val description: String,
-    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
-    val films: Set<Film>?
+    val description: String
+
+//    @ManyToMany(mappedBy = "genres", fetch = FetchType.LAZY)
+//    val films: Set<Film>?
 ) {
     override fun hashCode() = Objects.hash(
             id, name, description
     )
+
+    override fun toString(): String {
+        return "Genre{id=$id,name=$name,description=$description}"
+    }
 }

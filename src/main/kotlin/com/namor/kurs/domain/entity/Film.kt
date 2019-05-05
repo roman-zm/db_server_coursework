@@ -1,11 +1,8 @@
 package com.namor.kurs.domain.entity
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.Table
+import org.springframework.data.rest.core.annotation.RestResource
+import java.util.*
+import javax.persistence.*
 
 @Entity
 @Table(name = "film")
@@ -21,6 +18,19 @@ data class Film(
         val year: Int,
         val actors: String,
         val price: Double = 0.0,
-        val duration: String
-)
+        val duration: String,
+        @ManyToMany(cascade = [CascadeType.ALL])
+        @JoinTable(
+                name = "filmgenre",
+                joinColumns = [ JoinColumn(name = "film") ],
+                inverseJoinColumns = [ JoinColumn(name = "genre") ]
+        )
+        @RestResource(exported = false)
+        val genres: Set<Genre>
+) {
+        override fun hashCode() = Objects.hash(
+                id, loginAdmin, name, director, year, actors,
+                price, duration
+        )
+}
 

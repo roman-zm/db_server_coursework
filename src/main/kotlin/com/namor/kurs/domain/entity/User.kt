@@ -12,6 +12,6 @@ data class User(
     @Column(name = "login")
     val login: String,
     val fio: String,
-    val sex: String,
+    val sex: Char,
     val email: String
 )

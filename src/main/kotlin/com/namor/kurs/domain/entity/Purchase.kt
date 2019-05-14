@@ -1,13 +1,15 @@
 package com.namor.kurs.domain.entity
 
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Table(name = "purchase")
 @Entity
 data class Purchase(
-    @Id val user: String,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int,
+    @Column(name = "\"user\"")
+    val user: String,
     val film: Int
 )
 

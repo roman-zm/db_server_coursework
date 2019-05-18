@@ -15,7 +15,8 @@ class ExposeEntityIdRestConfiguration : RepositoryRestConfigurer {
                 Administrator::class.java,
                 Genre::class.java,
                 Purchase::class.java,
-                Rating::class.java
+                Rating::class.java,
+                Comment::class.java
         )
     }
 }

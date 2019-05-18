@@ -14,7 +14,8 @@ class ExposeEntityIdRestConfiguration : RepositoryRestConfigurer {
                 Film::class.java,
                 Administrator::class.java,
                 Genre::class.java,
-                Purchase::class.java
+                Purchase::class.java,
+                Rating::class.java
         )
     }
 }

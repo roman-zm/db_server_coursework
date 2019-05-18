@@ -1,13 +1,21 @@
 package com.namor.kurs.domain.entity
 
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import java.io.Serializable
+import javax.persistence.*
 
 @Table(name = "rating")
 @Entity
+@IdClass(RatingId::class)
 data class Rating(
-    @Id val user: String,
-    val film: Int,
-    val mark: Int
+        @Column(name = "\"user\"")
+        @Id val user: String,
+        @Id val film: Int,
+        val mark: Int
 )
+
+
+data class RatingId(
+        @Column(name = "\"user\"")
+        val user: String = "",
+        val film: Int = 0
+): Serializable
